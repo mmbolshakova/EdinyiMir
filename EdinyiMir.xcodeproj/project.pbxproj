@@ -1,0 +1,570 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		86DC53DB2F47BACA220AA58D /* libPods-EdinyiMir.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8FB52A04B93F9CCCE668CCA6 /* libPods-EdinyiMir.a */; };
+		FC0BBBF22632EADC00253C72 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0BBBF12632EADC00253C72 /* TabBarViewController.swift */; };
+		FC0BBBFE2633080700253C72 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0BBBFD2633080700253C72 /* MainViewController.swift */; };
+		FC0BBC082633101400253C72 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC0BBC072633101400253C72 /* MenuViewController.swift */; };
+		FC14FD99263328690060A974 /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC14FD98263328690060A974 /* PersonalViewController.swift */; };
+		FC1C012726373552002B06DD /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1C012626373552002B06DD /* RegisterViewController.swift */; };
+		FC1C013126373CB5002B06DD /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1C013026373CB5002B06DD /* AuthViewController.swift */; };
+		FC205EE8262E2D3C00DF3C6B /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC205EE6262E2D3C00DF3C6B /* MenuTableViewCell.swift */; };
+		FC205EE9262E2D3C00DF3C6B /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC205EE7262E2D3C00DF3C6B /* MenuTableViewCell.xib */; };
+		FC205EF42630461B00DF3C6B /* MenuItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC205EF32630461B00DF3C6B /* MenuItems.swift */; };
+		FC205EF826305F2300DF3C6B /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC205EF726305F2300DF3C6B /* UIImageView.swift */; };
+		FC205F01263061F300DF3C6B /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC205F00263061F300DF3C6B /* Colors.swift */; };
+		FC8CD01A2637453200CDD66B /* FirstPageRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8CD0192637453200CDD66B /* FirstPageRegisterView.swift */; };
+		FC8CD01E2637458000CDD66B /* FirstPageRegisterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC8CD01D2637458000CDD66B /* FirstPageRegisterView.xib */; };
+		FC91C1292602290000A31B0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC91C1282602290000A31B0F /* AppDelegate.swift */; };
+		FC91C12B2602290000A31B0F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC91C12A2602290000A31B0F /* SceneDelegate.swift */; };
+		FC91C12D2602290000A31B0F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC91C12C2602290000A31B0F /* ViewController.swift */; };
+		FC91C1302602290000A31B0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC91C12E2602290000A31B0F /* Main.storyboard */; };
+		FC91C1322602290900A31B0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC91C1312602290900A31B0F /* Assets.xcassets */; };
+		FC91C1352602290900A31B0F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC91C1332602290900A31B0F /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		8FB52A04B93F9CCCE668CCA6 /* libPods-EdinyiMir.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EdinyiMir.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9FB37B4C8F049978BC01E9D8 /* Pods-EdinyiMir.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EdinyiMir.release.xcconfig"; path = "Target Support Files/Pods-EdinyiMir/Pods-EdinyiMir.release.xcconfig"; sourceTree = "<group>"; };
+		EAE97ED9FD67CE5E55530EF6 /* Pods-EdinyiMir.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EdinyiMir.debug.xcconfig"; path = "Target Support Files/Pods-EdinyiMir/Pods-EdinyiMir.debug.xcconfig"; sourceTree = "<group>"; };
+		FC0BBBF12632EADC00253C72 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		FC0BBBFD2633080700253C72 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		FC0BBC072633101400253C72 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		FC14FD98263328690060A974 /* PersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewController.swift; sourceTree = "<group>"; };
+		FC1C012626373552002B06DD /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		FC1C013026373CB5002B06DD /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		FC205EE6262E2D3C00DF3C6B /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
+		FC205EE7262E2D3C00DF3C6B /* MenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuTableViewCell.xib; sourceTree = "<group>"; };
+		FC205EF32630461B00DF3C6B /* MenuItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItems.swift; sourceTree = "<group>"; };
+		FC205EF726305F2300DF3C6B /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
+		FC205F00263061F300DF3C6B /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		FC8CD0192637453200CDD66B /* FirstPageRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPageRegisterView.swift; sourceTree = "<group>"; };
+		FC8CD01D2637458000CDD66B /* FirstPageRegisterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirstPageRegisterView.xib; sourceTree = "<group>"; };
+		FC91C1252602290000A31B0F /* EdinyiMir.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EdinyiMir.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC91C1282602290000A31B0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FC91C12A2602290000A31B0F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		FC91C12C2602290000A31B0F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		FC91C12F2602290000A31B0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		FC91C1312602290900A31B0F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FC91C1342602290900A31B0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FC91C1362602290900A31B0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FC91C1222602290000A31B0F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				86DC53DB2F47BACA220AA58D /* libPods-EdinyiMir.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		30EE46FFC5454CB722B48833 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				EAE97ED9FD67CE5E55530EF6 /* Pods-EdinyiMir.debug.xcconfig */,
+				9FB37B4C8F049978BC01E9D8 /* Pods-EdinyiMir.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		B5024F6C739C59488C9C1F27 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8FB52A04B93F9CCCE668CCA6 /* libPods-EdinyiMir.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FC0BBBEF2632EA3A00253C72 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				FC0BBBF12632EADC00253C72 /* TabBarViewController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		FC0BBC0126330FA600253C72 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				FC91C15F2602601700A31B0F /* Registration */,
+				FC91C15A26024FEB00A31B0F /* Authorization */,
+				FC0BBC0626330FEB00253C72 /* Personal */,
+				FC0BBC0526330FE400253C72 /* Search */,
+				FC0BBC0426330FDB00253C72 /* Menu */,
+				FC0BBC0326330FD300253C72 /* Contacts */,
+				FCCF222E262B1BAD00EEB694 /* Main */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		FC0BBC0326330FD300253C72 /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Contacts;
+			sourceTree = "<group>";
+		};
+		FC0BBC0426330FDB00253C72 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				FC205EE1262E15A100DF3C6B /* MenuTableView */,
+				FC0BBC072633101400253C72 /* MenuViewController.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		FC0BBC0526330FE400253C72 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		FC0BBC0626330FEB00253C72 /* Personal */ = {
+			isa = PBXGroup;
+			children = (
+				FC14FD98263328690060A974 /* PersonalViewController.swift */,
+			);
+			path = Personal;
+			sourceTree = "<group>";
+		};
+		FC205EE1262E15A100DF3C6B /* MenuTableView */ = {
+			isa = PBXGroup;
+			children = (
+				FC205EE6262E2D3C00DF3C6B /* MenuTableViewCell.swift */,
+				FC205EE7262E2D3C00DF3C6B /* MenuTableViewCell.xib */,
+				FC205EF32630461B00DF3C6B /* MenuItems.swift */,
+			);
+			path = MenuTableView;
+			sourceTree = "<group>";
+		};
+		FC205EF626305F0D00DF3C6B /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				FC205EF726305F2300DF3C6B /* UIImageView.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		FC205EFA263061AC00DF3C6B /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				FC205EFB263061B400DF3C6B /* Color */,
+			);
+			path = Constant;
+			sourceTree = "<group>";
+		};
+		FC205EFB263061B400DF3C6B /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				FC205F00263061F300DF3C6B /* Colors.swift */,
+			);
+			path = Color;
+			sourceTree = "<group>";
+		};
+		FC8CD018263744DB00CDD66B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FC8CD0192637453200CDD66B /* FirstPageRegisterView.swift */,
+				FC8CD01D2637458000CDD66B /* FirstPageRegisterView.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		FC91C11C260228FF00A31B0F = {
+			isa = PBXGroup;
+			children = (
+				FC91C1272602290000A31B0F /* EdinyiMir */,
+				FC91C1262602290000A31B0F /* Products */,
+				30EE46FFC5454CB722B48833 /* Pods */,
+				B5024F6C739C59488C9C1F27 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		FC91C1262602290000A31B0F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FC91C1252602290000A31B0F /* EdinyiMir.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FC91C1272602290000A31B0F /* EdinyiMir */ = {
+			isa = PBXGroup;
+			children = (
+				FC0BBC0126330FA600253C72 /* ViewControllers */,
+				FC0BBBEF2632EA3A00253C72 /* TabBar */,
+				FC205EFA263061AC00DF3C6B /* Constant */,
+				FC205EF626305F0D00DF3C6B /* Extension */,
+				FC91C1362602290900A31B0F /* Info.plist */,
+				FCCF224B262B3B1900EEB694 /* Resourсes */,
+				FC91C1282602290000A31B0F /* AppDelegate.swift */,
+				FC91C12A2602290000A31B0F /* SceneDelegate.swift */,
+				FC91C12C2602290000A31B0F /* ViewController.swift */,
+				FC91C12E2602290000A31B0F /* Main.storyboard */,
+			);
+			path = EdinyiMir;
+			sourceTree = "<group>";
+		};
+		FC91C15A26024FEB00A31B0F /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+				FC1C013026373CB5002B06DD /* AuthViewController.swift */,
+			);
+			path = Authorization;
+			sourceTree = "<group>";
+		};
+		FC91C15F2602601700A31B0F /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				FC8CD018263744DB00CDD66B /* Views */,
+				FC1C012626373552002B06DD /* RegisterViewController.swift */,
+			);
+			path = Registration;
+			sourceTree = "<group>";
+		};
+		FCCF222E262B1BAD00EEB694 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				FC0BBBFD2633080700253C72 /* MainViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		FCCF224B262B3B1900EEB694 /* Resourсes */ = {
+			isa = PBXGroup;
+			children = (
+				FC91C1312602290900A31B0F /* Assets.xcassets */,
+				FC91C1332602290900A31B0F /* LaunchScreen.storyboard */,
+			);
+			path = "Resourсes";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FC91C1242602290000A31B0F /* EdinyiMir */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FC91C1392602290900A31B0F /* Build configuration list for PBXNativeTarget "EdinyiMir" */;
+			buildPhases = (
+				23E5D53E01F26150A5D7409D /* [CP] Check Pods Manifest.lock */,
+				FC91C1212602290000A31B0F /* Sources */,
+				FC91C1222602290000A31B0F /* Frameworks */,
+				FC91C1232602290000A31B0F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = EdinyiMir;
+			productName = EdinyiMir;
+			productReference = FC91C1252602290000A31B0F /* EdinyiMir.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FC91C11D260228FF00A31B0F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1200;
+				LastUpgradeCheck = 1200;
+				TargetAttributes = {
+					FC91C1242602290000A31B0F = {
+						CreatedOnToolsVersion = 12.0.1;
+					};
+				};
+			};
+			buildConfigurationList = FC91C120260228FF00A31B0F /* Build configuration list for PBXProject "EdinyiMir" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FC91C11C260228FF00A31B0F;
+			productRefGroup = FC91C1262602290000A31B0F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FC91C1242602290000A31B0F /* EdinyiMir */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FC91C1232602290000A31B0F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC91C1352602290900A31B0F /* LaunchScreen.storyboard in Resources */,
+				FC91C1322602290900A31B0F /* Assets.xcassets in Resources */,
+				FC205EE9262E2D3C00DF3C6B /* MenuTableViewCell.xib in Resources */,
+				FC8CD01E2637458000CDD66B /* FirstPageRegisterView.xib in Resources */,
+				FC91C1302602290000A31B0F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		23E5D53E01F26150A5D7409D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-EdinyiMir-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FC91C1212602290000A31B0F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC0BBBFE2633080700253C72 /* MainViewController.swift in Sources */,
+				FC8CD01A2637453200CDD66B /* FirstPageRegisterView.swift in Sources */,
+				FC205F01263061F300DF3C6B /* Colors.swift in Sources */,
+				FC0BBC082633101400253C72 /* MenuViewController.swift in Sources */,
+				FC205EE8262E2D3C00DF3C6B /* MenuTableViewCell.swift in Sources */,
+				FC0BBBF22632EADC00253C72 /* TabBarViewController.swift in Sources */,
+				FC14FD99263328690060A974 /* PersonalViewController.swift in Sources */,
+				FC91C12D2602290000A31B0F /* ViewController.swift in Sources */,
+				FC91C1292602290000A31B0F /* AppDelegate.swift in Sources */,
+				FC1C013126373CB5002B06DD /* AuthViewController.swift in Sources */,
+				FC205EF826305F2300DF3C6B /* UIImageView.swift in Sources */,
+				FC1C012726373552002B06DD /* RegisterViewController.swift in Sources */,
+				FC91C12B2602290000A31B0F /* SceneDelegate.swift in Sources */,
+				FC205EF42630461B00DF3C6B /* MenuItems.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		FC91C12E2602290000A31B0F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FC91C12F2602290000A31B0F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		FC91C1332602290900A31B0F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FC91C1342602290900A31B0F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FC91C1372602290900A31B0F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FC91C1382602290900A31B0F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FC91C13A2602290900A31B0F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EAE97ED9FD67CE5E55530EF6 /* Pods-EdinyiMir.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 44ZZM8MU7P;
+				INFOPLIST_FILE = EdinyiMir/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = mmbolshakova.EdinyiMir;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FC91C13B2602290900A31B0F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9FB37B4C8F049978BC01E9D8 /* Pods-EdinyiMir.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 44ZZM8MU7P;
+				INFOPLIST_FILE = EdinyiMir/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = mmbolshakova.EdinyiMir;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FC91C120260228FF00A31B0F /* Build configuration list for PBXProject "EdinyiMir" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FC91C1372602290900A31B0F /* Debug */,
+				FC91C1382602290900A31B0F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FC91C1392602290900A31B0F /* Build configuration list for PBXNativeTarget "EdinyiMir" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FC91C13A2602290900A31B0F /* Debug */,
+				FC91C13B2602290900A31B0F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FC91C11D260228FF00A31B0F /* Project object */;
+}

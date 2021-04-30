@@ -1,0 +1,6 @@
+module Pods_EdinyiMir {
+  umbrella header "Pods-EdinyiMir-umbrella.h"
+
+  export *
+  module * { export * }
+}
