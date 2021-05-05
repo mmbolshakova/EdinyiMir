@@ -28,5 +28,9 @@ class AuthViewController: UIViewController {
         mainView.backgroundColor = Colors.backgroundColor
         authView.backgroundColor = Colors.secondaryBackgroundColor
     }
-
+    
+    @IBAction func closeViewController(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
 }
