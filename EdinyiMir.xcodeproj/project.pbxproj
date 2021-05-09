@@ -19,8 +19,9 @@
 		FC205EF42630461B00DF3C6B /* MenuItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC205EF32630461B00DF3C6B /* MenuItems.swift */; };
 		FC205EF826305F2300DF3C6B /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC205EF726305F2300DF3C6B /* UIImageView.swift */; };
 		FC205F01263061F300DF3C6B /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC205F00263061F300DF3C6B /* Colors.swift */; };
-		FC8CD01A2637453200CDD66B /* FirstPageRegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8CD0192637453200CDD66B /* FirstPageRegisterView.swift */; };
-		FC8CD01E2637458000CDD66B /* FirstPageRegisterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC8CD01D2637458000CDD66B /* FirstPageRegisterView.xib */; };
+		FC446CD52644026F00B6B04E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FC446CD42644026F00B6B04E /* GoogleService-Info.plist */; };
+		FC446CD9264408BD00B6B04E /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC446CD8264408BD00B6B04E /* Alert.swift */; };
+		FC446CE32645535600B6B04E /* DatabaseTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC446CE22645535600B6B04E /* DatabaseTable.swift */; };
 		FC91C1292602290000A31B0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC91C1282602290000A31B0F /* AppDelegate.swift */; };
 		FC91C12B2602290000A31B0F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC91C12A2602290000A31B0F /* SceneDelegate.swift */; };
 		FC91C12D2602290000A31B0F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC91C12C2602290000A31B0F /* ViewController.swift */; };
@@ -44,8 +45,9 @@
 		FC205EF32630461B00DF3C6B /* MenuItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuItems.swift; sourceTree = "<group>"; };
 		FC205EF726305F2300DF3C6B /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		FC205F00263061F300DF3C6B /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		FC8CD0192637453200CDD66B /* FirstPageRegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstPageRegisterView.swift; sourceTree = "<group>"; };
-		FC8CD01D2637458000CDD66B /* FirstPageRegisterView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirstPageRegisterView.xib; sourceTree = "<group>"; };
+		FC446CD42644026F00B6B04E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		FC446CD8264408BD00B6B04E /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		FC446CE22645535600B6B04E /* DatabaseTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseTable.swift; sourceTree = "<group>"; };
 		FC91C1252602290000A31B0F /* EdinyiMir.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EdinyiMir.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC91C1282602290000A31B0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC91C12A2602290000A31B0F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 		FC205EFA263061AC00DF3C6B /* Constant */ = {
 			isa = PBXGroup;
 			children = (
+				FC446CE12645534100B6B04E /* Database */,
 				FC205EFB263061B400DF3C6B /* Color */,
 			);
 			path = Constant;
@@ -172,13 +175,20 @@
 			path = Color;
 			sourceTree = "<group>";
 		};
-		FC8CD018263744DB00CDD66B /* Views */ = {
+		FC446CD7264408AA00B6B04E /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				FC8CD0192637453200CDD66B /* FirstPageRegisterView.swift */,
-				FC8CD01D2637458000CDD66B /* FirstPageRegisterView.xib */,
+				FC446CD8264408BD00B6B04E /* Alert.swift */,
 			);
-			path = Views;
+			path = Common;
+			sourceTree = "<group>";
+		};
+		FC446CE12645534100B6B04E /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				FC446CE22645535600B6B04E /* DatabaseTable.swift */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 		FC91C11C260228FF00A31B0F = {
@@ -202,11 +212,13 @@
 		FC91C1272602290000A31B0F /* EdinyiMir */ = {
 			isa = PBXGroup;
 			children = (
+				FC446CD7264408AA00B6B04E /* Common */,
 				FC0BBC0126330FA600253C72 /* ViewControllers */,
 				FC0BBBEF2632EA3A00253C72 /* TabBar */,
 				FC205EFA263061AC00DF3C6B /* Constant */,
 				FC205EF626305F0D00DF3C6B /* Extension */,
 				FC91C1362602290900A31B0F /* Info.plist */,
+				FC446CD42644026F00B6B04E /* GoogleService-Info.plist */,
 				FCCF224B262B3B1900EEB694 /* Resourсes */,
 				FC91C1282602290000A31B0F /* AppDelegate.swift */,
 				FC91C12A2602290000A31B0F /* SceneDelegate.swift */,
@@ -227,7 +239,6 @@
 		FC91C15F2602601700A31B0F /* Registration */ = {
 			isa = PBXGroup;
 			children = (
-				FC8CD018263744DB00CDD66B /* Views */,
 				FC1C012626373552002B06DD /* RegisterViewController.swift */,
 			);
 			path = Registration;
@@ -311,8 +322,8 @@
 				FC91C1352602290900A31B0F /* LaunchScreen.storyboard in Resources */,
 				FC91C1322602290900A31B0F /* Assets.xcassets in Resources */,
 				FC205EE9262E2D3C00DF3C6B /* MenuTableViewCell.xib in Resources */,
-				FC8CD01E2637458000CDD66B /* FirstPageRegisterView.xib in Resources */,
 				FC91C1302602290000A31B0F /* Main.storyboard in Resources */,
+				FC446CD52644026F00B6B04E /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -349,8 +360,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				FC0BBBFE2633080700253C72 /* MainViewController.swift in Sources */,
-				FC8CD01A2637453200CDD66B /* FirstPageRegisterView.swift in Sources */,
 				FC205F01263061F300DF3C6B /* Colors.swift in Sources */,
+				FC446CD9264408BD00B6B04E /* Alert.swift in Sources */,
+				FC446CE32645535600B6B04E /* DatabaseTable.swift in Sources */,
 				FC0BBC082633101400253C72 /* MenuViewController.swift in Sources */,
 				FC205EE8262E2D3C00DF3C6B /* MenuTableViewCell.swift in Sources */,
 				FC0BBBF22632EADC00253C72 /* TabBarViewController.swift in Sources */,

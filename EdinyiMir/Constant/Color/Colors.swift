@@ -44,6 +44,26 @@ public enum Colors {
         )
         return color
     }()
+    
+    public static let modalBackgroundColor: UIColor = {
+        let lightThemeColor: UIColor = UIColor(red: 244, green: 246, blue: 247)!
+        let darkThemeColor: UIColor = UIColor(red: 28, green: 28, blue: 30)!
+        let color = UIColor.semanticColor(
+            lightThemeColor: lightThemeColor,
+            darkThemeColor: darkThemeColor
+        )
+        return color
+    }()
+    
+    public static let modalSecondaryBackgroundColor: UIColor = {
+        let lightThemeColor: UIColor = UIColor.white
+        let darkThemeColor: UIColor = UIColor.black
+        let color = UIColor.semanticColor(
+            lightThemeColor: lightThemeColor,
+            darkThemeColor: darkThemeColor
+        )
+        return color
+    }()
 
     
     // MARK: - Separator
