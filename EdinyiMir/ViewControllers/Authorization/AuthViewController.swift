@@ -48,11 +48,11 @@ class AuthViewController: UIViewController {
                     if error == nil {
                         self.dismiss(animated: true, completion: nil)
                     } else {
-                        self.alert.showAlert(fromController: self, title: "Ошибка", message: "Логин и/или пароль указан неверно")
+                        self.alert.showAlert(from: self, title: "", message: "Логин и/или пароль указан неверно")
                     }
                 }
             } else {
-                alert.showAlert(fromController: self, title: "Ошибка", message: "Заполнены не все поля")
+                alert.showAlert(from: self, title: "", message: "Заполнены не все поля")
             }
         }
     }

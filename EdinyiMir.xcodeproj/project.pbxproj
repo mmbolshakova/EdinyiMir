@@ -22,6 +22,8 @@
 		FC446CD52644026F00B6B04E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FC446CD42644026F00B6B04E /* GoogleService-Info.plist */; };
 		FC446CD9264408BD00B6B04E /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC446CD8264408BD00B6B04E /* Alert.swift */; };
 		FC446CE32645535600B6B04E /* DatabaseTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC446CE22645535600B6B04E /* DatabaseTable.swift */; };
+		FC75FBDD26496C1E007EF9EA /* PhotoStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC75FBDC26496C1E007EF9EA /* PhotoStorage.swift */; };
+		FC75FBE026498497007EF9EA /* UserRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC75FBDF26498497007EF9EA /* UserRegistration.swift */; };
 		FC91C1292602290000A31B0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC91C1282602290000A31B0F /* AppDelegate.swift */; };
 		FC91C12B2602290000A31B0F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC91C12A2602290000A31B0F /* SceneDelegate.swift */; };
 		FC91C12D2602290000A31B0F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC91C12C2602290000A31B0F /* ViewController.swift */; };
@@ -48,6 +50,8 @@
 		FC446CD42644026F00B6B04E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FC446CD8264408BD00B6B04E /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		FC446CE22645535600B6B04E /* DatabaseTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseTable.swift; sourceTree = "<group>"; };
+		FC75FBDC26496C1E007EF9EA /* PhotoStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoStorage.swift; sourceTree = "<group>"; };
+		FC75FBDF26498497007EF9EA /* UserRegistration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegistration.swift; sourceTree = "<group>"; };
 		FC91C1252602290000A31B0F /* EdinyiMir.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EdinyiMir.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC91C1282602290000A31B0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC91C12A2602290000A31B0F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -179,6 +183,8 @@
 			isa = PBXGroup;
 			children = (
 				FC446CD8264408BD00B6B04E /* Alert.swift */,
+				FC75FBDC26496C1E007EF9EA /* PhotoStorage.swift */,
+				FC75FBDF26498497007EF9EA /* UserRegistration.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -189,6 +195,13 @@
 				FC446CE22645535600B6B04E /* DatabaseTable.swift */,
 			);
 			path = Database;
+			sourceTree = "<group>";
+		};
+		FC75FBE226499430007EF9EA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		FC91C11C260228FF00A31B0F = {
@@ -212,6 +225,7 @@
 		FC91C1272602290000A31B0F /* EdinyiMir */ = {
 			isa = PBXGroup;
 			children = (
+				FC75FBE226499430007EF9EA /* Model */,
 				FC446CD7264408AA00B6B04E /* Common */,
 				FC0BBC0126330FA600253C72 /* ViewControllers */,
 				FC0BBBEF2632EA3A00253C72 /* TabBar */,
@@ -359,6 +373,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FC75FBE026498497007EF9EA /* UserRegistration.swift in Sources */,
 				FC0BBBFE2633080700253C72 /* MainViewController.swift in Sources */,
 				FC205F01263061F300DF3C6B /* Colors.swift in Sources */,
 				FC446CD9264408BD00B6B04E /* Alert.swift in Sources */,
@@ -371,6 +386,7 @@
 				FC91C1292602290000A31B0F /* AppDelegate.swift in Sources */,
 				FC1C013126373CB5002B06DD /* AuthViewController.swift in Sources */,
 				FC205EF826305F2300DF3C6B /* UIImageView.swift in Sources */,
+				FC75FBDD26496C1E007EF9EA /* PhotoStorage.swift in Sources */,
 				FC1C012726373552002B06DD /* RegisterViewController.swift in Sources */,
 				FC91C12B2602290000A31B0F /* SceneDelegate.swift in Sources */,
 				FC205EF42630461B00DF3C6B /* MenuItems.swift in Sources */,
