@@ -18,7 +18,8 @@ private struct LoadButton {
 
 class RegisterViewController: UIViewController {
     //MARK: - Private Variables
-    private let regions = ["", "Крымское РО", "г. Москва", "Петербургское РО", "Челябинское РО", "Чеченское РО"]
+//    private var regions: [String]? = nil
+    private let regions = ["Крымское РО", "г. Москва", "Петербургское РО", "Челябинское РО", "Чеченское РО"]
     private var idRegion: Int = 0
     private var selectedRegion: String?
     private let alert = Alert()
@@ -179,19 +180,19 @@ extension RegisterViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedRegion = regions[row]
         idRegion = row
+        selectedRegion = regions[row]
     }
 }
 
 extension RegisterViewController {
     //MARK: - Registration
     @objc private func register() {
-        if checkForEmptyFields() && checkForSelectedRegion() &&  checkForPassword() &&  checkForCorrectEmail() {
+        if checkForEmptyFields() &&  checkForPassword() &&  checkForCorrectEmail() {
             let lastName = lastNameField.text!
             let firstName = firstNameField.text!
             let otherName = otherNameField.text
-            let birthdayDate = datePicker.date.string()
+            let birthdayDate = datePicker.date.string(withFormat: "dd/mm/yyyy")
             let phone = phoneField.text!
             let email = emailField.text!
             let passportSeria = seriaField.text!
@@ -231,7 +232,8 @@ extension RegisterViewController {
                             UserRegistration.vtekFirstPhotoUrl : "",
                             UserRegistration.vtekSecondPhotoUrl : "",
                             UserRegistration.region : region,
-                            UserRegistration.confirmation : false
+                            UserRegistration.confirmation : false,
+                            UserRegistration.role : "user"
                         ])
                         if let profilePhoto = self.profilePhotoImage.image {
                             self.uploadPhoto(currentUserId: userID, image: profilePhoto, path: PhotoStorage.profilePhotos) { (photoResult) in
@@ -255,7 +257,7 @@ extension RegisterViewController {
                                 }
                             }
                         } else {
-                            confirmationMessage = "Для подтверждения аккаунта необходимо закгрузить фотографии паспорта и справки ВТЭК"
+                            confirmationMessage = "Для подтверждения аккаунта необходимо загрузить фотографии паспорта и справки ВТЭК"
                         }
                         if let passportSecondPhoto = self.passportSecondTempImage {
                             self.uploadPhoto(currentUserId: userID, image: passportSecondPhoto, path: PhotoStorage.passportSecondPage) { (photoResult) in
@@ -268,7 +270,7 @@ extension RegisterViewController {
                                 }
                             }
                         } else {
-                            confirmationMessage = "Для подтверждения аккаунта необходимо закгрузить фотографии паспорта и справки ВТЭК"
+                            confirmationMessage = "Для подтверждения аккаунта необходимо загрузить фотографии паспорта и справки ВТЭК"
                         }
                         if let vtekFirstPhoto = self.vtekFirstTempImage {
                             self.uploadPhoto(currentUserId: userID, image: vtekFirstPhoto, path: PhotoStorage.vtekFirstPage) { (photoResult) in
@@ -281,7 +283,7 @@ extension RegisterViewController {
                                 }
                             }
                         } else {
-                            confirmationMessage = "Для подтверждения аккаунта необходимо закгрузить фотографии паспорта и справки ВТЭК"
+                            confirmationMessage = "Для подтверждения аккаунта необходимо загрузить фотографии паспорта и справки ВТЭК"
                         }
                         if let vtekSecondPhoto = self.vtekSecondTempImage {
                             self.uploadPhoto(currentUserId: userID, image: vtekSecondPhoto, path: PhotoStorage.vtekSecondPage) { (photoResult) in
@@ -294,7 +296,7 @@ extension RegisterViewController {
                                 }
                             }
                         } else {
-                            confirmationMessage = "Для подтверждения аккаунта необходимо закгрузить фотографии паспорта и справки ВТЭК"
+                            confirmationMessage = "Для подтверждения аккаунта необходимо загрузить фотографии паспорта и справки ВТЭК"
                         }
                         Database.database().reference().child(DatabaseTable.usersDB).child(userID).updateChildValues([UserRegistration.confirmationReason : confirmationMessage])
                     }
@@ -356,13 +358,6 @@ extension RegisterViewController {
             }
         }
         return isNotEmptyOrUnselected
-    }
-    
-    private func checkForSelectedRegion() -> Bool {
-        if idRegion == 0 || selectedRegion == nil {
-            alert.showAlert(from: self, title: "", message: "Необходимо выбрать округ")
-        }
-        return idRegion != 0 || selectedRegion == nil
     }
     
     private func checkForPassword() -> Bool {

@@ -29,18 +29,30 @@ class PersonalViewController: UIViewController {
     private let regions = [" ", "Крымское РО", "г. Москва", "Петербургское РО", "Челябинское РО", "Чеченское РО"]
     private var idRegion: Int = 0
     private var selectedRegion: String?
-    
+    private var currentUser: User? {
+        didSet {
+            let defaults = UserDefaults.standard
+            if let userUID = defaults.string(forKey: DefaultsKeys.userUid), userUID != "" {
+                hideOrShowViews(isUID: true)
+            } else {
+                hideOrShowViews(isUID: false)
+            }
+            setupUserData()
+        }
+    }
     //MARK: - MainView
+    @IBOutlet weak var personalInfoView: UIView?
     @IBOutlet var mainView: UIView!
     @IBOutlet weak var statusBarView: UIView!
     @IBOutlet weak var headerView: UIView!
-    @IBOutlet weak var comeInView: UIView!
+    @IBOutlet weak var comeInView: UIView?
     @IBOutlet weak var comeToProfileLabel: UILabel!
     @IBOutlet weak var mooiLabel: UILabel!
     
     //MARK: - ConfirmationView
     @IBOutlet weak var confirmationView: UIView!
     @IBOutlet weak var confirmImageView: UIImageView!
+    @IBOutlet weak var confirmation: UILabel!
     
     //MARK: - ProfileView
     @IBOutlet weak var profileView: UIView!
@@ -56,6 +68,7 @@ class PersonalViewController: UIViewController {
     @IBOutlet weak var otherNameLabel: UILabel!
     @IBOutlet weak var otherNameField: UITextField!
     @IBOutlet weak var otherName: UILabel!
+    @IBOutlet weak var otherNameView: UIView!
     
     @IBOutlet weak var birthdayLabel: UILabel!
     @IBOutlet weak var birthdayDatePicker: UIDatePicker!
@@ -141,7 +154,7 @@ class PersonalViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         isEditSelected = false
         setupColors()
         
@@ -161,11 +174,20 @@ class PersonalViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        Auth.auth().addStateDidChangeListener { (auth, user) in
-            if user == nil {
-                self.mainView.isHidden = false
-            }
+        let defaults = UserDefaults.standard
+        if let userUID = defaults.string(forKey: DefaultsKeys.userUid), userUID != "" {
+            getJsonTasks(idUser: userUID)
+            comeInView?.isHidden = true
+            personalInfoView?.isHidden = true
+        } else {
+            hideOrShowViews(isUID: false)
         }
+    }
+    
+    func hideOrShowViews(isUID: Bool) {
+        comeInView?.isHidden = isUID
+        personalInfoView?.isHidden = !isUID
+        
     }
     
     private func setupColors() {
@@ -181,6 +203,7 @@ class PersonalViewController: UIViewController {
     @IBAction func comeIn(_ sender: Any) {
         if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AuthViewController") as? AuthViewController
         {
+            vc.modalPresentationStyle = .fullScreen
             present(vc, animated: true, completion: nil)
         }
     }
@@ -188,7 +211,104 @@ class PersonalViewController: UIViewController {
     @IBAction func register(_ sender: Any) {
         if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "RegisterViewController") as? RegisterViewController
         {
+            vc.modalPresentationStyle = .fullScreen
             present(vc, animated: true, completion: nil)
+        }
+    }
+    
+    private func setupImage(with urlString: String?, for imageView: UIImageView, defaultImage: UIImage) {
+        var image: UIImage? = nil
+        if let urlString = urlString, !urlString.isEmpty {
+            let ref = Storage.storage().reference(forURL: urlString)
+            let megaByte = Int64(15 * 1024 * 1024)
+            ref.getData(maxSize: megaByte) { (data, error) in
+                guard let imageData = data else {
+                    return
+                }
+                image = UIImage(data: imageData)
+                imageView.image = image
+                return
+            }
+        }
+        imageView.image = defaultImage
+    }
+    
+    private func setupDataToConfirmationView(confirm: Bool, reason: String?) {
+        if confirm {
+            confirmImageView.image = UIImage(named: "verified")
+            confirmImageView.tintColor = .systemGreen
+            confirmation.text = "Профиль подтвержден"
+        } else {
+            confirmImageView.image = UIImage(named: "notVerified")
+            confirmImageView.tintColor = .systemRed
+            if let reason = reason {
+                confirmation.text = "Профиль не подтвержден. " + reason
+            }
+        }
+    }
+    
+    private func setupUserData() {
+        if let currentUser = currentUser {
+            self.lastName.text = currentUser.lastName
+            self.firstName.text = currentUser.firstName
+            if currentUser.otherName.isNilOrEmpty {
+                otherNameView.isHidden = true
+            } else {
+                self.otherName.text = currentUser.otherName
+            }
+            self.birthday.text = currentUser.birthday
+            self.phone.text = currentUser.phone
+            self.email.text = currentUser.email
+            self.passportSeria.text = currentUser.passportSeria
+            self.passportNumber.text = currentUser.passportNumber
+            self.issuedBy.text = currentUser.passportIssuedBy
+            self.whenIssued.text = currentUser.passportWhenIssued
+            setupImage(with: currentUser.profilePhotoUrl, for: self.profilePhoto, defaultImage: UIImage(systemName: "person.crop.circle.fill")!)
+            self.code.text = currentUser.passportCode
+            setupImage(with: currentUser.passportFirstPageUrl, for: self.passportFirstPageImage, defaultImage: UIImage(named: "documentNotLoad")!)
+            setupImage(with: currentUser.passportSecondPageUrl, for: self.passportSecondPageImage, defaultImage: UIImage(named: "documentNotLoad")!)
+            self.vtekSeria.text = currentUser.vtekSeria
+            self.vtekNumber.text = currentUser.vtekNumber
+            self.vtekDate.text = currentUser.vtekDate
+            setupImage(with: currentUser.vtekFirstPhotoUrl, for: self.vtekFirstImage, defaultImage: UIImage(named: "documentNotLoad")!)
+            setupImage(with: currentUser.vtekSecondPhotoUrl, for: self.vtekSecondImage, defaultImage: UIImage(named: "documentNotLoad")!)
+            self.region.text = currentUser.region
+            setupDataToConfirmationView(confirm: currentUser.confirmation, reason: currentUser.confirmationReason)
+        }
+    }
+    
+    private func getJsonTasks(idUser: String) {
+        let refQuery = Database.database().reference().child(DatabaseTable.usersDB)
+        refQuery.observeSingleEvent(of: .value) { (snapshot) in
+            if let snap = snapshot.childSnapshot(forPath: idUser) as? DataSnapshot {
+                if let dict = snap.value as? [String:AnyObject] {
+                    
+                    let user = User(lastName: dict[UserRegistration.lastName] as? String ?? "",
+                                            firstName: dict[UserRegistration.firstName] as? String ?? "",
+                                            otherName: dict[UserRegistration.otherName] as? String ?? "",
+                                            birthday: dict[UserRegistration.birthday] as? String ?? "",
+                                            phone: dict[UserRegistration.phone] as? String ?? "",
+                                            email: dict[UserRegistration.email] as? String ?? "",
+                                            passportSeria: dict[UserRegistration.passportSeria] as? String ?? "",
+                                            passportNumber: dict[UserRegistration.passportNumber] as? String ?? "",
+                                            passportIssuedBy: dict[UserRegistration.passportIssuedBy] as? String ?? "",
+                                            passportWhenIssued: dict[UserRegistration.passportWhenIssued] as? String ?? "",
+                                            profilePhotoUrl: dict[UserRegistration.profilePhotoUrl] as? String ?? "",
+                                            passportCode: dict[UserRegistration.passportCode] as? String ?? "",
+                                            passportFirstPageUrl: dict[UserRegistration.passportFirstPageUrl] as? String ?? "",
+                                            passportSecondPageUrl: dict[UserRegistration.passportSecondPageUrl] as? String ?? "",
+                                            vtekSeria: dict[UserRegistration.vtekSeria] as? String ?? "",
+                                            vtekNumber: dict[UserRegistration.vtekNumber] as? String ?? "",
+                                            vtekDate: dict[UserRegistration.vtekDate] as? String ?? "",
+                                            vtekFirstPhotoUrl: dict[UserRegistration.vtekFirstPhotoUrl] as? String ?? "",
+                                            vtekSecondPhotoUrl: dict[UserRegistration.vtekSecondPhotoUrl] as? String ?? "",
+                                            region: dict[UserRegistration.region] as? String ?? "",
+                                            confirmation: dict[UserRegistration.confirmation] as! Bool,
+                                            confirmationReason: dict[UserRegistration.confirmationReason] as? String ?? "",
+                                            role: dict[UserRegistration.role] as? String ?? "")
+                    self.currentUser = user
+                }
+            }
         }
     }
 }
@@ -279,6 +399,21 @@ extension PersonalViewController {
     private func setupControlButtonsView() {
         controlButtonsView.backgroundColor = Colors.secondaryBackgroundColor
         separatorView.backgroundColor = Colors.backgroundColor
+        
+        secondControlButton.addTarget(self, action: #selector(cancelOrLogOutButtonPressed), for: .touchUpInside)
+    }
+    
+    @objc private func cancelOrLogOutButtonPressed() {
+        if secondControlButton.titleLabel?.text == "ВЫЙТИ" {
+            let defaults = UserDefaults.standard
+            defaults.set("", forKey: DefaultsKeys.userUid)
+            do {
+                try Auth.auth().signOut()
+                hideOrShowViews(isUID: false)
+            } catch {
+                print(error)
+            }
+        }
     }
 }
 

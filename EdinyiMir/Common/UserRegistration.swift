@@ -30,4 +30,5 @@ public struct UserRegistration {
     static let region = "region"
     static let confirmation = "confirmation"
     static let confirmationReason = "confirmationReason"
+    static let role = "role"
 }

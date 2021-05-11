@@ -46,6 +46,10 @@ class AuthViewController: UIViewController {
             if !email.isEmpty && !pass.isEmpty {
                 Auth.auth().signIn(withEmail: email, password: pass) { (result, error) in
                     if error == nil {
+                        if let result = result {
+                            let defaults = UserDefaults.standard
+                            defaults.set(result.user.uid, forKey: DefaultsKeys.userUid)
+                        }
                         self.dismiss(animated: true, completion: nil)
                     } else {
                         self.alert.showAlert(from: self, title: "", message: "Логин и/или пароль указан неверно")

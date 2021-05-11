@@ -9,4 +9,5 @@ import Foundation
 
 public enum DatabaseTable {
     static let usersDB: String = "users"
+    static let regions: String = "regions"
 }
