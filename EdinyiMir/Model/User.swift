@@ -25,6 +25,8 @@ struct User: Decodable {
     var vtekSeria: String?
     var vtekNumber: String?
     var vtekDate: String?
+    var vtekDateIsIndefinite: Bool
+    var vtekGroup: String?
     var vtekFirstPhotoUrl: String?
     var vtekSecondPhotoUrl: String?
     var region: String?
@@ -49,6 +51,8 @@ struct User: Decodable {
     vtekSeria: String,
     vtekNumber: String,
     vtekDate: String,
+    vtekDateIsIndefinite: Bool,
+    vtekGroup: String,
     vtekFirstPhotoUrl: String,
     vtekSecondPhotoUrl: String,
     region: String,
@@ -72,6 +76,8 @@ struct User: Decodable {
         self.vtekSeria = vtekSeria
         self.vtekNumber = vtekNumber
         self.vtekDate = vtekDate
+        self.vtekDateIsIndefinite = vtekDateIsIndefinite
+        self.vtekGroup = vtekGroup
         self.vtekFirstPhotoUrl = vtekFirstPhotoUrl
         self.vtekSecondPhotoUrl = vtekSecondPhotoUrl
         self.region = region

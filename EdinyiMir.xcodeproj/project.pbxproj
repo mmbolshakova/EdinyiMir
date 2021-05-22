@@ -26,12 +26,16 @@
 		FC75FBE026498497007EF9EA /* UserRegistration.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC75FBDF26498497007EF9EA /* UserRegistration.swift */; };
 		FC75FBE42649954C007EF9EA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC75FBE32649954C007EF9EA /* User.swift */; };
 		FC75FBE8264A00D3007EF9EA /* DefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC75FBE7264A00D3007EF9EA /* DefaultsKeys.swift */; };
+		FC75FBEC264FF74D007EF9EA /* CommonFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC75FBEB264FF74D007EF9EA /* CommonFunctions.swift */; };
 		FC91C1292602290000A31B0F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC91C1282602290000A31B0F /* AppDelegate.swift */; };
 		FC91C12B2602290000A31B0F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC91C12A2602290000A31B0F /* SceneDelegate.swift */; };
 		FC91C12D2602290000A31B0F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC91C12C2602290000A31B0F /* ViewController.swift */; };
 		FC91C1302602290000A31B0F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC91C12E2602290000A31B0F /* Main.storyboard */; };
 		FC91C1322602290900A31B0F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FC91C1312602290900A31B0F /* Assets.xcassets */; };
 		FC91C1352602290900A31B0F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FC91C1332602290900A31B0F /* LaunchScreen.storyboard */; };
+		FCC4B97C2651A2A3004EDC9A /* AgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC4B97B2651A2A3004EDC9A /* AgreementViewController.swift */; };
+		FCC4BA6E26531BB3004EDC9A /* CryptedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC4BA6D26531BB3004EDC9A /* CryptedData.swift */; };
+		FCC4BA8826539C22004EDC9A /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC4BA8726539C22004EDC9A /* String.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +60,7 @@
 		FC75FBDF26498497007EF9EA /* UserRegistration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRegistration.swift; sourceTree = "<group>"; };
 		FC75FBE32649954C007EF9EA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FC75FBE7264A00D3007EF9EA /* DefaultsKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsKeys.swift; sourceTree = "<group>"; };
+		FC75FBEB264FF74D007EF9EA /* CommonFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonFunctions.swift; sourceTree = "<group>"; };
 		FC91C1252602290000A31B0F /* EdinyiMir.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EdinyiMir.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC91C1282602290000A31B0F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FC91C12A2602290000A31B0F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +69,9 @@
 		FC91C1312602290900A31B0F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FC91C1342602290900A31B0F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FC91C1362602290900A31B0F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FCC4B97B2651A2A3004EDC9A /* AgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementViewController.swift; sourceTree = "<group>"; };
+		FCC4BA6D26531BB3004EDC9A /* CryptedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptedData.swift; sourceTree = "<group>"; };
+		FCC4BA8726539C22004EDC9A /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +114,7 @@
 		FC0BBC0126330FA600253C72 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				FCC4B97A2651A209004EDC9A /* Agreement */,
 				FC91C15F2602601700A31B0F /* Registration */,
 				FC91C15A26024FEB00A31B0F /* Authorization */,
 				FC0BBC0626330FEB00253C72 /* Personal */,
@@ -162,6 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				FC205EF726305F2300DF3C6B /* UIImageView.swift */,
+				FCC4BA8726539C22004EDC9A /* String.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -190,6 +200,8 @@
 				FC75FBDC26496C1E007EF9EA /* PhotoStorage.swift */,
 				FC75FBDF26498497007EF9EA /* UserRegistration.swift */,
 				FC75FBE7264A00D3007EF9EA /* DefaultsKeys.swift */,
+				FC75FBEB264FF74D007EF9EA /* CommonFunctions.swift */,
+				FCC4BA6D26531BB3004EDC9A /* CryptedData.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -262,6 +274,14 @@
 				FC1C012626373552002B06DD /* RegisterViewController.swift */,
 			);
 			path = Registration;
+			sourceTree = "<group>";
+		};
+		FCC4B97A2651A209004EDC9A /* Agreement */ = {
+			isa = PBXGroup;
+			children = (
+				FCC4B97B2651A2A3004EDC9A /* AgreementViewController.swift */,
+			);
+			path = Agreement;
 			sourceTree = "<group>";
 		};
 		FCCF222E262B1BAD00EEB694 /* Main */ = {
@@ -381,6 +401,8 @@
 			files = (
 				FC75FBE026498497007EF9EA /* UserRegistration.swift in Sources */,
 				FC0BBBFE2633080700253C72 /* MainViewController.swift in Sources */,
+				FCC4BA8826539C22004EDC9A /* String.swift in Sources */,
+				FC75FBEC264FF74D007EF9EA /* CommonFunctions.swift in Sources */,
 				FC205F01263061F300DF3C6B /* Colors.swift in Sources */,
 				FC446CD9264408BD00B6B04E /* Alert.swift in Sources */,
 				FC446CE32645535600B6B04E /* DatabaseTable.swift in Sources */,
@@ -390,6 +412,8 @@
 				FC14FD99263328690060A974 /* PersonalViewController.swift in Sources */,
 				FC91C12D2602290000A31B0F /* ViewController.swift in Sources */,
 				FC91C1292602290000A31B0F /* AppDelegate.swift in Sources */,
+				FCC4B97C2651A2A3004EDC9A /* AgreementViewController.swift in Sources */,
+				FCC4BA6E26531BB3004EDC9A /* CryptedData.swift in Sources */,
 				FC1C013126373CB5002B06DD /* AuthViewController.swift in Sources */,
 				FC205EF826305F2300DF3C6B /* UIImageView.swift in Sources */,
 				FC75FBDD26496C1E007EF9EA /* PhotoStorage.swift in Sources */,

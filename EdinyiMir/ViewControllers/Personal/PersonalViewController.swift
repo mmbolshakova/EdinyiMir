@@ -8,6 +8,8 @@
 import UIKit
 import Firebase
 import SnapKit
+import RNCryptor
+import CryptoSwift
 
 private struct Const {
     static let indent: CGFloat = 20.0
@@ -25,14 +27,16 @@ private struct Const {
 //MARK: - ComeIntView
 class PersonalViewController: UIViewController {
     //MARK: - PrivateVariables
-    private var isEditSelected: Bool = false
+    private var common = CommonFunctions()
     private let regions = [" ", "Крымское РО", "г. Москва", "Петербургское РО", "Челябинское РО", "Чеченское РО"]
     private var idRegion: Int = 0
     private var selectedRegion: String?
+    private var userUID: String?
     private var currentUser: User? {
         didSet {
             let defaults = UserDefaults.standard
             if let userUID = defaults.string(forKey: DefaultsKeys.userUid), userUID != "" {
+                self.userUID = userUID
                 hideOrShowViews(isUID: true)
             } else {
                 hideOrShowViews(isUID: false)
@@ -41,6 +45,7 @@ class PersonalViewController: UIViewController {
         }
     }
     //MARK: - MainView
+    @IBOutlet weak var mainScrollView: UIScrollView!
     @IBOutlet weak var personalInfoView: UIView?
     @IBOutlet var mainView: UIView!
     @IBOutlet weak var statusBarView: UIView!
@@ -58,23 +63,18 @@ class PersonalViewController: UIViewController {
     @IBOutlet weak var profileView: UIView!
     
     @IBOutlet weak var lastNameLabel: UILabel!
-    @IBOutlet weak var lastNameField: UITextField!
     @IBOutlet weak var lastName: UILabel!
     
     @IBOutlet weak var firstNameLabel: UILabel!
-    @IBOutlet weak var firstNameField: UITextField!
     @IBOutlet weak var firstName: UILabel!
     
     @IBOutlet weak var otherNameLabel: UILabel!
-    @IBOutlet weak var otherNameField: UITextField!
     @IBOutlet weak var otherName: UILabel!
     @IBOutlet weak var otherNameView: UIView!
     
     @IBOutlet weak var birthdayLabel: UILabel!
-    @IBOutlet weak var birthdayDatePicker: UIDatePicker!
     @IBOutlet weak var birthday: UILabel!
     
-    @IBOutlet weak var loadProfilePhotoButton: UIButton!
     @IBOutlet weak var profilePhoto: UIImageView!
     
     
@@ -82,67 +82,56 @@ class PersonalViewController: UIViewController {
     @IBOutlet weak var contactsView: UIView!
     
     @IBOutlet weak var phoneLabel: UILabel!
-    @IBOutlet weak var phoneField: UITextField!
     @IBOutlet weak var phone: UILabel!
     
     @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var email: UILabel!
     
     //MARK: - PassportView
     @IBOutlet weak var passportView: UIView!
     
     @IBOutlet weak var passportSeriaLabel: UILabel!
-    @IBOutlet weak var passportSeriaTextField: UITextField!
     @IBOutlet weak var passportSeria: UILabel!
     
     @IBOutlet weak var passportNumberLabel: UILabel!
-    @IBOutlet weak var passportNumberField: UITextField!
     @IBOutlet weak var passportNumber: UILabel!
     
     @IBOutlet weak var issuedByLabel: UILabel!
-    @IBOutlet weak var issuedByField: UITextField!
     @IBOutlet weak var issuedBy: UILabel!
     
     @IBOutlet weak var whenIssuedLabel: UILabel!
-    @IBOutlet weak var whenIssuedDatePicker: UIDatePicker!
     @IBOutlet weak var whenIssued: UILabel!
     
     @IBOutlet weak var codeLabel: UILabel!
-    @IBOutlet weak var codeField: UITextField!
     @IBOutlet weak var code: UILabel!
     
     @IBOutlet weak var passportFirstPageImage: UIImageView!
-    @IBOutlet weak var loadFirstPagePhotoButton: UIButton!
     
     @IBOutlet weak var passportSecondPageImage: UIImageView!
-    @IBOutlet weak var loadSecondPagePhotoButton: UIButton!
     
     //MARK: - VtekView
     @IBOutlet weak var vtekView: UIView!
     
     @IBOutlet weak var vtekSeriaLabel: UILabel!
-    @IBOutlet weak var vtekSeriaField: UITextField!
     @IBOutlet weak var vtekSeria: UILabel!
     
     @IBOutlet weak var vtekNumberLabel: UILabel!
-    @IBOutlet weak var vtekNumberField: UITextField!
     @IBOutlet weak var vtekNumber: UILabel!
    
     @IBOutlet weak var vtekDateLabel: UILabel!
-    @IBOutlet weak var vtekDateField: UITextField!
     @IBOutlet weak var vtekDate: UILabel!
     
     @IBOutlet weak var vtekFirstImage: UIImageView!
-    @IBOutlet weak var loadVtekFirstPhotoButton: UIButton!
+    
+    @IBOutlet weak var vtekGroupLabel: UILabel!
+    @IBOutlet weak var vtekGroup: UILabel!
+    
     
     @IBOutlet weak var vtekSecondImage: UIImageView!
-    @IBOutlet weak var loadVtekSecondPhotoButton: UIButton!
     
     //MARK: - RegionView
     @IBOutlet weak var regionView: UIView!
     
-    @IBOutlet weak var regionPickerView: UIPickerView!
     @IBOutlet weak var region: UILabel!
     
     //MARK: - ControlButtonsView
@@ -155,7 +144,6 @@ class PersonalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        isEditSelected = false
         setupColors()
         
         setupConfirmationView()
@@ -166,14 +154,10 @@ class PersonalViewController: UIViewController {
         setupVtekView()
         setupRegionView()
         setupControlButtonsView()
-        
-        editing()
-        
-        regionPickerView.delegate = self
-        regionPickerView.dataSource = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        mainScrollView.contentOffset = CGPoint(x:0, y:0)
         let defaults = UserDefaults.standard
         if let userUID = defaults.string(forKey: DefaultsKeys.userUid), userUID != "" {
             getJsonTasks(idUser: userUID)
@@ -216,23 +200,6 @@ class PersonalViewController: UIViewController {
         }
     }
     
-    private func setupImage(with urlString: String?, for imageView: UIImageView, defaultImage: UIImage) {
-        var image: UIImage? = nil
-        if let urlString = urlString, !urlString.isEmpty {
-            let ref = Storage.storage().reference(forURL: urlString)
-            let megaByte = Int64(15 * 1024 * 1024)
-            ref.getData(maxSize: megaByte) { (data, error) in
-                guard let imageData = data else {
-                    return
-                }
-                image = UIImage(data: imageData)
-                imageView.image = image
-                return
-            }
-        }
-        imageView.image = defaultImage
-    }
-    
     private func setupDataToConfirmationView(confirm: Bool, reason: String?) {
         if confirm {
             confirmImageView.image = UIImage(named: "verified")
@@ -263,15 +230,16 @@ class PersonalViewController: UIViewController {
             self.passportNumber.text = currentUser.passportNumber
             self.issuedBy.text = currentUser.passportIssuedBy
             self.whenIssued.text = currentUser.passportWhenIssued
-            setupImage(with: currentUser.profilePhotoUrl, for: self.profilePhoto, defaultImage: UIImage(systemName: "person.crop.circle.fill")!)
+            common.setupImage(with: currentUser.profilePhotoUrl, for: self.profilePhoto, defaultImage: UIImage(systemName: "person.crop.circle.fill")!)
             self.code.text = currentUser.passportCode
-            setupImage(with: currentUser.passportFirstPageUrl, for: self.passportFirstPageImage, defaultImage: UIImage(named: "documentNotLoad")!)
-            setupImage(with: currentUser.passportSecondPageUrl, for: self.passportSecondPageImage, defaultImage: UIImage(named: "documentNotLoad")!)
+            common.setupImage(with: currentUser.passportFirstPageUrl, for: self.passportFirstPageImage, defaultImage: UIImage(named: "documentNotLoad")!)
+            common.setupImage(with: currentUser.passportSecondPageUrl, for: self.passportSecondPageImage, defaultImage: UIImage(named: "documentNotLoad")!)
             self.vtekSeria.text = currentUser.vtekSeria
             self.vtekNumber.text = currentUser.vtekNumber
-            self.vtekDate.text = currentUser.vtekDate
-            setupImage(with: currentUser.vtekFirstPhotoUrl, for: self.vtekFirstImage, defaultImage: UIImage(named: "documentNotLoad")!)
-            setupImage(with: currentUser.vtekSecondPhotoUrl, for: self.vtekSecondImage, defaultImage: UIImage(named: "documentNotLoad")!)
+            self.vtekDate.text = currentUser.vtekDateIsIndefinite ? "Бессрочно" : currentUser.vtekDate
+            self.vtekGroup.text = currentUser.vtekGroup
+            common.setupImage(with: currentUser.vtekFirstPhotoUrl, for: self.vtekFirstImage, defaultImage: UIImage(named: "documentNotLoad")!)
+            common.setupImage(with: currentUser.vtekSecondPhotoUrl, for: self.vtekSecondImage, defaultImage: UIImage(named: "documentNotLoad")!)
             self.region.text = currentUser.region
             setupDataToConfirmationView(confirm: currentUser.confirmation, reason: currentUser.confirmationReason)
         }
@@ -300,6 +268,8 @@ class PersonalViewController: UIViewController {
                                             vtekSeria: dict[UserRegistration.vtekSeria] as? String ?? "",
                                             vtekNumber: dict[UserRegistration.vtekNumber] as? String ?? "",
                                             vtekDate: dict[UserRegistration.vtekDate] as? String ?? "",
+                                            vtekDateIsIndefinite: dict[UserRegistration.vtekDateIsIndefinite] as! Bool,
+                                            vtekGroup: dict[UserRegistration.vtekGroup] as? String ?? "",
                                             vtekFirstPhotoUrl: dict[UserRegistration.vtekFirstPhotoUrl] as? String ?? "",
                                             vtekSecondPhotoUrl: dict[UserRegistration.vtekSecondPhotoUrl] as? String ?? "",
                                             region: dict[UserRegistration.region] as? String ?? "",
@@ -316,55 +286,14 @@ class PersonalViewController: UIViewController {
 //MARK: - PersonalInfoView
 extension PersonalViewController {
     private func setupLabelColors() {
-        let labelsArray = [lastNameLabel, firstNameLabel, otherNameLabel, birthdayLabel, phoneLabel, emailLabel, passportSeriaLabel, passportNumberLabel, issuedByLabel, whenIssuedLabel, codeLabel, vtekSeriaLabel, vtekNumberLabel, vtekDateLabel]
+        let labelsArray = [lastNameLabel, firstNameLabel, otherNameLabel, birthdayLabel, phoneLabel, emailLabel, passportSeriaLabel, passportNumberLabel, issuedByLabel, whenIssuedLabel, codeLabel, vtekSeriaLabel, vtekNumberLabel, vtekGroupLabel, vtekDateLabel]
         labelsArray.forEach { label in
             label?.textColor = Colors.customGray
         }
     }
     
-    private func editing() {
-        let labelsArray = [lastName, firstName, otherName, birthday, phone, email, passportSeria, passportNumber, issuedBy, whenIssued, code, vtekSeria, vtekNumber, vtekDate, region]
-        let fieldsArray = [lastNameField, firstNameField, otherNameField, birthdayDatePicker, phoneField, emailField, passportSeriaTextField, passportNumberField, issuedByField, whenIssuedDatePicker, codeField, vtekSeriaField, vtekNumberField, vtekDateField, regionPickerView]
-        labelsArray.forEach { label in
-            label?.isHidden = self.isEditSelected
-        }
-        fieldsArray.forEach { field in
-            field?.isHidden = !self.isEditSelected
-        }
-        
-        confirmationView.isHidden = self.isEditSelected
-        loadProfilePhotoButton.isHidden = !self.isEditSelected
-        profileView.snp.makeConstraints { make in
-            if self.isEditSelected {
-                make.top.equalToSuperview().offset(Const.indent)
-            } else {
-                make.top.equalTo(confirmationView.snp.bottom).offset(Const.indent)
-            }
-        }
-        
-        loadFirstPagePhotoButton.isHidden = !self.isEditSelected
-        loadSecondPagePhotoButton.isHidden = !self.isEditSelected
-        passportView.snp.makeConstraints { make in
-            make.height.equalTo(self.isEditSelected ? Const.passportViewFullHeight : Const.passportViewHeight)
-        }
-        
-        loadVtekFirstPhotoButton.isHidden = !self.isEditSelected
-        loadVtekSecondPhotoButton.isHidden = !self.isEditSelected
-        vtekView.snp.makeConstraints { make in
-            make.height.equalTo(self.isEditSelected ? Const.vtekViewFullHeight : Const.vtekViewHeight)
-        }
-        
-        regionView.snp.makeConstraints { make in
-            make.height.equalTo(self.isEditSelected ? Const.regionViewFullHeight : Const.regionViewHeight)
-        }
-        
-        firstControlButton.setTitle(self.isEditSelected ? "СОХРАНИТЬ" : "РЕДАКТИРОВАТЬ", for: .normal)
-        firstControlButton.setTitleColor(self.isEditSelected ? .systemGreen : .systemBlue, for: .normal)
-        secondControlButton.setTitle(self.isEditSelected ? "ОТМЕНА" : "ВЫЙТИ", for: .normal)
-        secondControlButton.setTitleColor(self.isEditSelected ? .systemBlue : .systemRed, for: .normal)
-    }
-    
     private func setupConfirmationView() {
+        confirmationView.isHidden = false
         confirmationView.backgroundColor = Colors.secondaryBackgroundColor
         confirmImageView.tintColor = .green
     }
@@ -372,7 +301,6 @@ extension PersonalViewController {
     private func setupProfileView() {
         profileView.backgroundColor = Colors.secondaryBackgroundColor
         
-        loadProfilePhotoButton.titleLabel?.textAlignment = .center
         profilePhoto.center = view.center
     }
     
@@ -382,14 +310,10 @@ extension PersonalViewController {
     
     private func setupPassportView() {
         passportView.backgroundColor = Colors.secondaryBackgroundColor
-        loadFirstPagePhotoButton.titleLabel?.textAlignment = .center
-        loadSecondPagePhotoButton.titleLabel?.textAlignment = .center
     }
     
     private func setupVtekView() {
         vtekView.backgroundColor = Colors.secondaryBackgroundColor
-        loadVtekFirstPhotoButton.titleLabel?.textAlignment = .center
-        loadVtekSecondPhotoButton.titleLabel?.textAlignment = .center
     }
     
     private func setupRegionView() {
@@ -400,19 +324,27 @@ extension PersonalViewController {
         controlButtonsView.backgroundColor = Colors.secondaryBackgroundColor
         separatorView.backgroundColor = Colors.backgroundColor
         
-        secondControlButton.addTarget(self, action: #selector(cancelOrLogOutButtonPressed), for: .touchUpInside)
+        firstControlButton.addTarget(self, action: #selector(editButtonPressed), for: .touchUpInside)
+        secondControlButton.addTarget(self, action: #selector(logOutButtonPressed), for: .touchUpInside)
     }
     
-    @objc private func cancelOrLogOutButtonPressed() {
-        if secondControlButton.titleLabel?.text == "ВЫЙТИ" {
-            let defaults = UserDefaults.standard
-            defaults.set("", forKey: DefaultsKeys.userUid)
-            do {
-                try Auth.auth().signOut()
-                hideOrShowViews(isUID: false)
-            } catch {
-                print(error)
-            }
+    @objc private func logOutButtonPressed() {
+        let defaults = UserDefaults.standard
+        defaults.set("", forKey: DefaultsKeys.userUid)
+        do {
+            try Auth.auth().signOut()
+            hideOrShowViews(isUID: false)
+        } catch {
+            print(error)
+        }
+    }
+    
+    @objc private func editButtonPressed() {
+        if let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "RegisterViewController") as? RegisterViewController
+        {
+            vc.currentUser = currentUser
+            vc.modalPresentationStyle = .fullScreen
+            present(vc, animated: true, completion: nil)
         }
     }
 }

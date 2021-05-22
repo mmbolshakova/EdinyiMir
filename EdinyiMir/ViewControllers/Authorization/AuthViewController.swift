@@ -33,8 +33,8 @@ class AuthViewController: UIViewController {
         labelsArray.forEach { label in
             label?.textColor = Colors.labelColor
         }
-        mainView.backgroundColor = Colors.modalBackgroundColor
-        authView.backgroundColor = Colors.modalSecondaryBackgroundColor
+        mainView.backgroundColor = Colors.backgroundColor
+        authView.backgroundColor = Colors.secondaryBackgroundColor
     }
     
     @IBAction func closeViewController(_ sender: Any) {

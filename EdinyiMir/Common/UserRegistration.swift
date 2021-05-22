@@ -25,6 +25,8 @@ public struct UserRegistration {
     static let vtekSeria = "vtekSeria"
     static let vtekNumber = "vtekNumber"
     static let vtekDate = "vtekDate"
+    static let vtekDateIsIndefinite = "vtekDateIsIndefinite"
+    static let vtekGroup = "vtekGroup"
     static let vtekFirstPhotoUrl = "vtekFirstPhotoUrl"
     static let vtekSecondPhotoUrl = "vtekSecondPhotoUrl"
     static let region = "region"
