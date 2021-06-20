@@ -143,7 +143,13 @@ class PersonalViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        Auth.auth().addStateDidChangeListener { auth, user in
+          if let user = user {
+            self.getJsonTasks(idUser: user.debugDescription)
+          } else {
+            self.logOutButtonPressed()
+          }
+        }
         setupColors()
         
         setupConfirmationView()
@@ -158,6 +164,7 @@ class PersonalViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         mainScrollView.contentOffset = CGPoint(x:0, y:0)
+//        logOutButtonPressed()
         let defaults = UserDefaults.standard
         if let userUID = defaults.string(forKey: DefaultsKeys.userUid), userUID != "" {
             getJsonTasks(idUser: userUID)
@@ -216,6 +223,7 @@ class PersonalViewController: UIViewController {
     
     private func setupUserData() {
         if let currentUser = currentUser {
+            print("🦖 \(currentUser.passportSecondPageUrl)")
             self.lastName.text = currentUser.lastName
             self.firstName.text = currentUser.firstName
             if currentUser.otherName.isNilOrEmpty {
@@ -250,7 +258,6 @@ class PersonalViewController: UIViewController {
         refQuery.observeSingleEvent(of: .value) { (snapshot) in
             if let snap = snapshot.childSnapshot(forPath: idUser) as? DataSnapshot {
                 if let dict = snap.value as? [String:AnyObject] {
-                    
                     let user = User(lastName: dict[UserRegistration.lastName] as? String ?? "",
                                             firstName: dict[UserRegistration.firstName] as? String ?? "",
                                             otherName: dict[UserRegistration.otherName] as? String ?? "",
@@ -329,8 +336,7 @@ extension PersonalViewController {
     }
     
     @objc private func logOutButtonPressed() {
-        let defaults = UserDefaults.standard
-        defaults.set("", forKey: DefaultsKeys.userUid)
+        common.clearUserDefaults()
         do {
             try Auth.auth().signOut()
             hideOrShowViews(isUID: false)

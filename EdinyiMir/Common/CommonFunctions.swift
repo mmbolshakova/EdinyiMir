@@ -35,4 +35,9 @@ class CommonFunctions {
         }
         return nil
     }
+    
+    func clearUserDefaults() {
+        let defaults = UserDefaults.standard
+        defaults.set("", forKey: DefaultsKeys.userUid)
+    }
 }

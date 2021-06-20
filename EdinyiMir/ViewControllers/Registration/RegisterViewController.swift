@@ -407,17 +407,17 @@ extension RegisterViewController {
                     UserRegistration.passportNumber : passportNumber,
                     UserRegistration.passportIssuedBy : issuedBy,
                     UserRegistration.passportWhenIssued : whenIssuedDate,
-                    UserRegistration.profilePhotoUrl : "",
+                    UserRegistration.profilePhotoUrl : currentUser?.profilePhotoUrl ?? "",
                     UserRegistration.passportCode : code,
-                    UserRegistration.passportFirstPageUrl : "",
-                    UserRegistration.passportSecondPageUrl : "",
+                    UserRegistration.passportFirstPageUrl : currentUser?.passportFirstPageUrl ?? "",
+                    UserRegistration.passportSecondPageUrl : currentUser?.passportSecondPageUrl ?? "",
                     UserRegistration.vtekSeria : vtekSeria,
                     UserRegistration.vtekNumber : vtekNumber,
                     UserRegistration.vtekDateIsIndefinite : vtekIsIndefinite,
                     UserRegistration.vtekGroup : vtekGroupNumber,
                     UserRegistration.vtekDate : vtekDate,
-                    UserRegistration.vtekFirstPhotoUrl : "",
-                    UserRegistration.vtekSecondPhotoUrl : "",
+                    UserRegistration.vtekFirstPhotoUrl : currentUser?.vtekFirstPhotoUrl ?? "",
+                    UserRegistration.vtekSecondPhotoUrl : currentUser?.vtekSecondPhotoUrl ?? "",
                     UserRegistration.region : region,
                     UserRegistration.confirmation : false,
                     UserRegistration.role : "user"
@@ -505,10 +505,16 @@ extension RegisterViewController {
         self.passportNumberField.text = currentUser?.passportNumber
         self.issuedByField.text = currentUser?.passportIssuedBy
         self.whenIssuedDatePicker.date = common.dateFromString(dateString: currentUser?.passportWhenIssued) ?? Date()
-        common.setupImage(with: currentUser?.profilePhotoUrl, for: self.passportFirstImage, defaultImage: UIImage(systemName: "person.crop.circle.fill")!)
+        common.setupImage(with: currentUser?.profilePhotoUrl,
+                          for: self.profilePhotoImage,
+                          defaultImage: UIImage(systemName: "person.crop.circle.fill")!)
         self.codeField.text = currentUser?.passportCode
-        common.setupImage(with: currentUser?.passportFirstPageUrl, for: self.passportFirstImage, defaultImage: UIImage(named: "documentNotLoad")!)
-        common.setupImage(with: currentUser?.passportSecondPageUrl, for: self.passportSecondImage, defaultImage: UIImage(named: "documentNotLoad")!)
+        common.setupImage(with: currentUser?.passportFirstPageUrl,
+                          for: self.passportFirstImage,
+                          defaultImage: UIImage(named: "documentNotLoad")!)
+        common.setupImage(with: currentUser?.passportSecondPageUrl,
+                          for: self.passportSecondImage,
+                          defaultImage: UIImage(named: "documentNotLoad")!)
         self.vtekSeriaField.text = currentUser?.vtekSeria
         self.vtekNumberField.text = currentUser?.vtekNumber
         if let _ = currentUser?.vtekDateIsIndefinite {
@@ -522,8 +528,12 @@ extension RegisterViewController {
         }
         self.vtekGroup.text = currentUser?.vtekGroup
         self.regionPickerView.selectRow(getRegionId(region: currentUser?.region), inComponent: 0, animated: false)
-        common.setupImage(with: currentUser?.vtekFirstPhotoUrl, for: self.vtekFirstImage, defaultImage: UIImage(named: "documentNotLoad")!)
-        common.setupImage(with: currentUser?.vtekSecondPhotoUrl, for: self.vtekSecondImage, defaultImage: UIImage(named: "documentNotLoad")!)
+        common.setupImage(with: currentUser?.vtekFirstPhotoUrl,
+                          for: self.vtekFirstImage,
+                          defaultImage: UIImage(named: "documentNotLoad")!)
+        common.setupImage(with: currentUser?.vtekSecondPhotoUrl,
+                          for: self.vtekSecondImage,
+                          defaultImage: UIImage(named: "documentNotLoad")!)
     }
     
     private func getRegionId(region: String?) -> Int {
