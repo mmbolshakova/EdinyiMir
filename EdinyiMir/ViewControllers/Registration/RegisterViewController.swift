@@ -190,7 +190,9 @@ class RegisterViewController: UIViewController {
         
         vtekDatePicker.locale = Locale(identifier: "ru_RU")
         vtekDatePicker.calendar.locale = Locale(identifier: "ru_RU")
-        vtekDatePicker.preferredDatePickerStyle = .compact
+        if #available(iOS 14.0, *) {
+            vtekDatePicker.preferredDatePickerStyle = .compact
+        }
         
         vtekIsIndefiniteSwitch.addTarget(self, action: #selector(hideOrShowVtekDate), for: .touchUpInside)
         loadfirstVtekButton.addTarget(self, action: #selector(loadVtekFirstPhotoPressed), for: .touchUpInside)

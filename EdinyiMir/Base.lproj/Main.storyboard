@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NR0-pl-afc">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -211,7 +212,7 @@
                                 <rect key="frame" x="0.0" y="114" width="414" height="699"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MYg-DE-A8U">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1261"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="652.5"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="SpX-9F-LQn">
                                                 <rect key="frame" x="132" y="20" width="150" height="150"/>
@@ -221,16 +222,13 @@
                                                 </constraints>
                                             </imageView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" bouncesZoom="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="kmN-3s-8N5">
-                                                <rect key="frame" x="20" y="190" width="374" height="1051"/>
+                                                <rect key="frame" x="20" y="190" width="374" height="442.5"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="IFt-P2-DFn"/>
                                                 </constraints>
-                                                <string key="text">В небольшом квартале к западу от Вашингтон-сквера улицы перепутались и переломались в короткие полоски, именуемые проездами. Эти проезды образуют странные углы и кривые линии. Одна улица там даже пересекает самое себя раза два. Некоему художнику удалось открыть весьма ценное свойство этой улицы. Предположим, сборщик из магазина со счетом за краски, бумагу и холст повстречает там самого себя, идущего восвояси, не получив ни единого цента по счету!
-И вот люди искусства набрели на своеобразный квартал Гринич-Виллидж в поисках окон, выходящих на север, кровель ХVIII столетия, голландских мансард и дешевой квартирной платы. Затем они перевезли туда с Шестой авеню несколько оловянных кружек и одну-две жаровни и основали «колонию».
-Студия Сью и Джонси помещалась наверху трехэтажного кирпичного дома. Джонси — уменьшительное от Джоанны. Одна приехала из штата Мэйн, другая из Калифорнии. Они познакомились за табльдотом одного ресторанчика на Вольмой улице и нашли, что их взгляды на искусство, цикорный салат и модные рукава вполне совпадают. В результате и возникла общая студия.
-Это было в мае. В ноябре неприветливый чужак, которого доктора именуют Пневмонией, незримо разгуливал по колонии, касаясь то одного, то другого своими ледяными пальцами. По Восточной стороне этот душегуб шагал смело, поражая десятки жертв, но здесь, в лабиринте узких, поросших мохом переулков, он плелся нога за ногу.
-Господина Пневмонию никак нельзя было назвать галантным старым джентльменом. Миниатюрная девушка, малокровная от калифорнийских зефиров, едва ли могла считаться достойным противником для дюжего старого тупицы с красными кулачищами и одышкой. Однако он свалил ее с ног, и Джонси лежала неподвижно на крашеной железной кровати, глядя сквозь мелкий переплет голландского окна на глухую стену соседнего кирпичного дома.</string>
+                                                <mutableString key="text">    Главной задачей МООИ «ЕДИНЫЙ МИР» является выражение и защита прав и законных интересов граждан РФ с ограниченными возможностями здоровья, их социальная реабилитация и интеграция в общество.
+    МООИ «ЕДИНЫЙ МИР» изучает и решает вопросы реализации гражданских прав, повышение доступности информации и различных услуг с применением всевозможных современных технологии и способов, получения образования и профессиональной подготовки, занятости и трудоустройства, а также создание возможности изучения новых возможностей в трудоустройстве граждан с ОВЗ, обеспечение качественным медицинским обслуживанием, а также социального обеспечения, доступности объектов социальной, культурной и транспортной инфраструктуры.</mutableString>
                                                 <color key="textColor" systemColor="labelColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
